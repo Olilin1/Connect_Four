@@ -4,11 +4,11 @@ QT = core gui
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
+INCLUDEPATH += $$PWD/../shared_files
+
 SOURCES += \
-    connectfourgame.cpp \
     gamewindow.cpp \
     main.cpp
 
 HEADERS += \
-    connectfourgame.h \
     gamewindow.h

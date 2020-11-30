@@ -1,6 +1,5 @@
-#include "connectfourgame.hpp"
-#include "randomAi.hpp"
-#include "humanConsolePlayer.hpp"
+#include "../shared_files/gameLibrary.hpp"
+
 #include <iostream>
 
 void displayWinner(short winner){

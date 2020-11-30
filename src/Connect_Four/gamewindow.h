@@ -2,6 +2,7 @@
 #define GAMEWINDOW_H
 
 #include <QWidget>
+#include "gameLibrary.hpp"
 
 class GameWindow : public QWidget
 {
