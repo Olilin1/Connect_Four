@@ -32,6 +32,13 @@ void ConnectFourGame::gameLoop(){
         short placement = turn == 1 ? player1(board) : player2(board); //Få vald kolumn från spelaren vars tur det är
         if(placement < 0 || placement > 6) continue;
         if(board[0][placement] == 0){ //Om den kolumnen inte är full
+            for(int i = 0; i < 6; i++){
+                for(int j = 0; j < 7; j++){
+                    cout << board[i][j];
+                }
+                cout << endl;
+             }
+             cout << endl;
             int i = 5;
             while(board[i][placement] != 0){ 
                 i--;

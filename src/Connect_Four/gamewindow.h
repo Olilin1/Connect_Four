@@ -1,16 +1,39 @@
 #ifndef GAMEWINDOW_H
 #define GAMEWINDOW_H
 
-#include <QWidget>
+
+#include <QGraphicsView>
+#include <QGraphicsScene>
+#include <QGraphicsRectItem>
+#include <QGraphicsEllipseItem>
+#include <QPushButton>
+#include <vector>
+#include <QDebug>
 #include "gameLibrary.hpp"
 
-class GameWindow : public QWidget
+
+class GameWindow : public QGraphicsView
 {
     Q_OBJECT
-public:
-    explicit GameWindow(QWidget *parent = nullptr);
 
-signals:
+public:
+    int diameter;
+    int windowHeight, windowWidth;
+
+    QGraphicsScene *mainScene;
+    ConnectFourGame *game;
+
+    std::vector<std::vector<QGraphicsEllipseItem*>> eclipses;
+    std::vector<QGraphicsRectItem*> hitboxes;
+
+
+
+
+public:
+    GameWindow(QGraphicsScene *scene);
+
+
+public slots:
 
 };
 

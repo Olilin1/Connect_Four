@@ -8,7 +8,9 @@ INCLUDEPATH += $$PWD/../shared_files
 
 SOURCES += \
     gamewindow.cpp \
-    main.cpp
+    main.cpp \
+    ../shared_files/*.cpp
 
 HEADERS += \
-    gamewindow.h
+    gamewindow.h \
+    gameLibrary.hpp

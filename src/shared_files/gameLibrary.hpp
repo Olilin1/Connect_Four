@@ -3,4 +3,5 @@
 #include "connectfourgame.hpp"
 #include "humanConsolePlayer.hpp"
 #include "randomAi.hpp"
+#include "sequentialAi.hpp"
 #endif
