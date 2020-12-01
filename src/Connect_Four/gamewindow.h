@@ -16,7 +16,7 @@ class GameWindow : public QGraphicsView
 {
     Q_OBJECT
 
-public:
+private:
     int diameter;
     int windowHeight, windowWidth;
 

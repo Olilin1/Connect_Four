@@ -9,12 +9,10 @@ class ConnectFourGame
 
 private:
     std::vector<std::vector<short>> board;
-    bool definedEndfunction;
     short turn;
     short winner;
     short (*player1)(std::vector<std::vector<short>>);
     short (*player2)(std::vector<std::vector<short>>);
-    void (*endFunc)(short);
     void gameLoop();
     short getWinner();
 
@@ -24,6 +22,9 @@ public:
                     short (*)(std::vector<std::vector<short>>));
     std::vector<std::vector<short>> getBoard();
     short getStatus();
+    void setPlayer1(short (*ptr)(std::vector<std::vector<short>>));
+    void setPlayer2(short (*ptr)(std::vector<std::vector<short>>));
+    void startGame();
                     
 };
 

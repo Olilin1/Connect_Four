@@ -1,12 +1,16 @@
 #include "connectfourgame.hpp"
 
 ConnectFourGame::ConnectFourGame(){
-
+    turn = 1;
+    winner = 0;
+    board.resize(6);
+    for(int i = 0; i < 6; i++){
+        board[i].resize(7);
+    }
 }
 
 ConnectFourGame::ConnectFourGame(short (*ptr1)(std::vector<std::vector<short>>),
                                 short (*ptr2)(std::vector<std::vector<short>>)){
-    definedEndfunction = false;
     player1 = ptr1;
     player2 = ptr2;
     turn = 1;
@@ -15,7 +19,6 @@ ConnectFourGame::ConnectFourGame(short (*ptr1)(std::vector<std::vector<short>>),
     for(int i = 0; i < 6; i++){
         board[i].resize(7);
     }
-    gameLoop();
 }
 
 std::vector<std::vector<short>> ConnectFourGame::getBoard(){
@@ -48,8 +51,16 @@ void ConnectFourGame::gameLoop(){
             turn = turn == 1 ? 2:1; //Byt vems tur det är
         }
     }
-    
-    if(definedEndfunction) endFunc(winner);
+}
+
+void ConnectFourGame::setPlayer1(short (*ptr)(std::vector<std::vector<short>>)){
+    player1 = ptr;
+}
+void ConnectFourGame::setPlayer2(short (*ptr)(std::vector<std::vector<short>>)){
+    player2 = ptr;
+}
+void ConnectFourGame::startGame(){
+    gameLoop();
 }
 
 short ConnectFourGame::getWinner(){
@@ -163,4 +174,3 @@ short ConnectFourGame::getWinner(){
     }
     return 3;
 }
-

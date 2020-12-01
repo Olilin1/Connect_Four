@@ -12,6 +12,7 @@ void displayWinner(short winner){
 
 int main(int argc, char* argv[]) {
     ConnectFourGame myGame(sequentialAi, randomAi);
+    myGame.startGame();
     displayWinner(myGame.getStatus());
     return 0;
 }
