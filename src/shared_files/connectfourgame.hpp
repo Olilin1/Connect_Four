@@ -6,20 +6,22 @@
 
 class ConnectFourGame
 {
-
+typedef short(*playerFunc)(std::vector<std::vector<short>>);
+typedef void(*graphicsFunc)(std::vector<std::vector<short>>);
 private:
     std::vector<std::vector<short>> board;
     short turn;
     short winner;
     short (*player1)(std::vector<std::vector<short>>);
     short (*player2)(std::vector<std::vector<short>>);
+    graphicsFunc graphics;
     void gameLoop();
     short getWinner();
 
 public:
-    ConnectFourGame();
-    ConnectFourGame(short (*)(std::vector<std::vector<short>>),
-                    short (*)(std::vector<std::vector<short>>));
+    ConnectFourGame(playerFunc = nullptr,
+                    playerFunc = nullptr,
+                    graphicsFunc = nullptr);
     std::vector<std::vector<short>> getBoard();
     short getStatus();
     void setPlayer1(short (*ptr)(std::vector<std::vector<short>>));

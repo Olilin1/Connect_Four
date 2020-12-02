@@ -3,10 +3,9 @@
 
 GameWindow *window;
 
-short testAi(std::vector<std::vector<short>>){
-    qDebug() << "HWO";
-    while(true) qApp->processEvents();
-    return 5;
+short windowConnector(std::vector<std::vector<short>> board){
+    short t = window->playerHandler(board);
+    return t;
 }
 
 int main(int argc, char **argv) {
@@ -15,7 +14,6 @@ QApplication app (argc, argv);
 QGraphicsScene *myScene = new QGraphicsScene();
 window = new GameWindow(myScene);
 window->show();
-window->game = new ConnectFourGame(testAi, testAi);
-
+window->setConnector(windowConnector); //God this is a dumb way of handling it
 return app.exec();
 }

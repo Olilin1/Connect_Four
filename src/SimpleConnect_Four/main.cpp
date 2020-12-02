@@ -9,6 +9,17 @@ void displayWinner(short winner){
     else cout << "It's a TIE!" << endl;
     return;
 }
+void consoleGraphics(std::vector<std::vector<short>> board){
+    for (int i = 0; i < 6; i++)
+    {
+        for (int j = 0; j < 7; j++)
+        {
+            std::cout << board[i][j];
+        }
+        std::cout << std::endl;
+    }
+    std::cout << std::endl;
+}
 
 int main(int argc, char* argv[]) {
     ConnectFourGame myGame(sequentialAi, randomAi);

@@ -1,18 +1,11 @@
 #include "connectfourgame.hpp"
 
-ConnectFourGame::ConnectFourGame(){
-    turn = 1;
-    winner = 0;
-    board.resize(6);
-    for(int i = 0; i < 6; i++){
-        board[i].resize(7);
-    }
-}
-
 ConnectFourGame::ConnectFourGame(short (*ptr1)(std::vector<std::vector<short>>),
-                                short (*ptr2)(std::vector<std::vector<short>>)){
+                                short (*ptr2)(std::vector<std::vector<short>>),
+                                void (*ptr3)(std::vector<std::vector<short>>)){
     player1 = ptr1;
     player2 = ptr2;
+    graphics = ptr3;
     turn = 1;
     winner = 0;
     board.resize(6);
@@ -35,13 +28,7 @@ void ConnectFourGame::gameLoop(){
         short placement = turn == 1 ? player1(board) : player2(board); //Få vald kolumn från spelaren vars tur det är
         if(placement < 0 || placement > 6) continue;
         if(board[0][placement] == 0){ //Om den kolumnen inte är full
-            for(int i = 0; i < 6; i++){
-                for(int j = 0; j < 7; j++){
-                    cout << board[i][j];
-                }
-                cout << endl;
-             }
-             cout << endl;
+            if(graphics != nullptr) graphics(board);
             int i = 5;
             while(board[i][placement] != 0){ 
                 i--;
