@@ -24,11 +24,12 @@ short ConnectFourGame::getStatus(){
 
 void ConnectFourGame::gameLoop(){
     using namespace std;
+    if(graphics != nullptr) graphics(board);
     while(winner == 0){ //Medans det inte finns någon vinnare
         short placement = turn == 1 ? player1(board) : player2(board); //Få vald kolumn från spelaren vars tur det är
         if(placement < 0 || placement > 6) continue;
         if(board[0][placement] == 0){ //Om den kolumnen inte är full
-            if(graphics != nullptr) graphics(board);
+            
             int i = 5;
             while(board[i][placement] != 0){ 
                 i--;
@@ -36,6 +37,7 @@ void ConnectFourGame::gameLoop(){
             board[i][placement] = turn; //Placera då en markör överst i kolumnen
             winner = getWinner(); //Kolla om det har uppstått en vinnare
             turn = turn == 1 ? 2:1; //Byt vems tur det är
+            if(graphics != nullptr) graphics(board);
         }
     }
 }
@@ -49,6 +51,10 @@ void ConnectFourGame::setPlayer2(short (*ptr)(std::vector<std::vector<short>>)){
 
 void ConnectFourGame::setGraphics(void (*ptr)(std::vector<std::vector<short>>)){
     graphics = ptr;
+}
+
+short ConnectFourGame::getTurn(){
+    return turn;
 }
 
 void ConnectFourGame::startGame(){
