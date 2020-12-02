@@ -24,8 +24,9 @@ public:
                     graphicsFunc = nullptr);
     std::vector<std::vector<short>> getBoard();
     short getStatus();
-    void setPlayer1(short (*ptr)(std::vector<std::vector<short>>));
-    void setPlayer2(short (*ptr)(std::vector<std::vector<short>>));
+    void setPlayer1(short (*)(std::vector<std::vector<short>>));
+    void setPlayer2(short (*)(std::vector<std::vector<short>>));
+    void setGraphics(graphicsFunc);
     void startGame();
                     
 };

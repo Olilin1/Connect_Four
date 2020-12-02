@@ -46,6 +46,11 @@ void ConnectFourGame::setPlayer1(short (*ptr)(std::vector<std::vector<short>>)){
 void ConnectFourGame::setPlayer2(short (*ptr)(std::vector<std::vector<short>>)){
     player2 = ptr;
 }
+
+void ConnectFourGame::setGraphics(void (*ptr)(std::vector<std::vector<short>>)){
+    graphics = ptr;
+}
+
 void ConnectFourGame::startGame(){
     gameLoop();
 }
