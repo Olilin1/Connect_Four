@@ -95,6 +95,7 @@ short GameWindow::playerHandler(std::vector<std::vector<short>> board){
         for(int j = 0; j <7;j++){
             if (board[i][j] == 1) eclipses[i+1][j]->setBrush(Qt::red);
             else if (board[i][j] == 2) eclipses[i+1][j]->setBrush(Qt::yellow);
+            else eclipses[i+1][j]->setBrush(Qt::white);
         }
     }
 
@@ -111,6 +112,7 @@ void GameWindow::graphicsHandler(std::vector<std::vector<short>> board){
         for(int j = 0; j <7;j++){
             if (board[i][j] == 1) eclipses[i+1][j]->setBrush(Qt::red);
             else if (board[i][j] == 2) eclipses[i+1][j]->setBrush(Qt::yellow);
+            else eclipses[i+1][j]->setBrush(Qt::white);
         }
     }
     qApp->processEvents();
@@ -133,7 +135,6 @@ void GameWindow::startGame(){
     game->setPlayer1(player1);
     game->setPlayer2(player2);
     game->setGraphics(graphicsConnector);
-    //game->setGraphics(consoleGraphics);
     game->startGame();
     QMessageBox msgBox;
     switch(game->getStatus()){
@@ -148,4 +149,9 @@ void GameWindow::startGame(){
         break;
     }
     msgBox.exec();
+
+    listSelection1->setVisible(true);
+    listSelection2->setVisible(true);
+    btnStart->setVisible(true);
+    graphicsBoard->setVisible(false);
 }

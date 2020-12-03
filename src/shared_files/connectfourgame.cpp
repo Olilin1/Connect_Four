@@ -60,9 +60,11 @@ short ConnectFourGame::getTurn(){
 void ConnectFourGame::startGame(){
     for(int i = 0; i < 6; i++){
         for(int j = 0; j < 7; j++){
-            board[i][j]++;
+            board[i][j] = 0;
         }
     }
+    winner = 0;
+    turn = 1;
     gameLoop();
 }
 
