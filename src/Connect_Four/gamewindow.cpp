@@ -15,7 +15,7 @@ void GameWindow::mouseMoveEvent(QMouseEvent *event){
     }
     if (event->pos().x() < 20 || mouseCol > 6 || !makeMove) return;
     eclipses[0][mouseCol]->setVisible(true);
-    eclipses[0][mouseCol]->setBrush(Qt::red);
+    eclipses[0][mouseCol]->setBrush(game->getTurn() == 1 ? Qt::red : Qt::yellow);
     QGraphicsView::mouseMoveEvent(event);
 }
 
@@ -85,6 +85,7 @@ void GameWindow::setPlayerConnector(short (*ptr)(std::vector<std::vector<short>>
 void GameWindow::setGraphicsConnector(void (*ptr)(std::vector<std::vector<short>>)){
     graphicsConnector = ptr;
 }
+
 short GameWindow::playerHandler(std::vector<std::vector<short>> board){
     start:
     graphicsBoard->setVisible(true);
@@ -102,6 +103,7 @@ short GameWindow::playerHandler(std::vector<std::vector<short>> board){
     while(playerChoice == -1) qApp->processEvents();
     makeMove = false;
     if(board[0][playerChoice] != 0) goto start;
+    eclipses[0][mouseCol]->setBrush(game->getTurn() != 1 ? Qt::red : Qt::yellow);
     return playerChoice;
 }
 
