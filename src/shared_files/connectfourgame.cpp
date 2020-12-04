@@ -40,7 +40,7 @@ void ConnectFourGame::gameLoop(){
             board[i][placement] = turn; //Placera då en markör överst i kolumnen
             winner = getWinner(); //Kolla om det har uppstått en vinnare
             turn = turn == 1 ? 2:1; //Byt vems tur det är
-            if(graphics != nullptr) graphics(board);
+            if(graphics != nullptr) graphics(board); //Om det finns en funktion för grafik, anropa då den.
         }
     }
 }
