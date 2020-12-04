@@ -47,10 +47,10 @@ GameWindow::GameWindow(QGraphicsScene *scene)
         eclipses[i].resize(7);
     }
 
-    hitboxes.resize(7);
+    rectangles.resize(7);
     for(int i = 0; i < 7; i++){
-        hitboxes[i] = new QGraphicsRectItem(diameter*i, diameter, diameter, diameter*6);
-        graphicsBoard->addToGroup(hitboxes[i]);
+        rectangles[i] = new QGraphicsRectItem(diameter*i, diameter, diameter, diameter*6);
+        graphicsBoard->addToGroup(rectangles[i]);
     }
 
     for(int i = 0; i < 7; i++){
@@ -73,12 +73,7 @@ GameWindow::GameWindow(QGraphicsScene *scene)
     setScene(scene);
 }
 
-void GameWindow::setPlayer1 (short (*ptr)(std::vector<std::vector<short>>)){
-    player1 = ptr;
-}
-void GameWindow::setPlayer2 (short (*ptr)(std::vector<std::vector<short>>)){
-    player2 = ptr;
-}
+
 void GameWindow::setPlayerConnector(short (*ptr)(std::vector<std::vector<short>>)){
     playerConnector = ptr;
 }
@@ -91,14 +86,6 @@ short GameWindow::playerHandler(std::vector<std::vector<short>> board){
     graphicsBoard->setVisible(true);
     makeMove = true;
     playerChoice = -1;
-
-    for(int i = 0; i <6; i++){
-        for(int j = 0; j <7;j++){
-            if (board[i][j] == 1) eclipses[i+1][j]->setBrush(Qt::red);
-            else if (board[i][j] == 2) eclipses[i+1][j]->setBrush(Qt::yellow);
-            else eclipses[i+1][j]->setBrush(Qt::white);
-        }
-    }
 
     while(playerChoice == -1) qApp->processEvents();
     makeMove = false;

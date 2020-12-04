@@ -25,8 +25,8 @@ public:
     std::vector<std::vector<short>> getBoard();
     short getStatus();
     short getTurn();
-    void setPlayer1(short (*)(std::vector<std::vector<short>>));
-    void setPlayer2(short (*)(std::vector<std::vector<short>>));
+    void setPlayer1(playerFunc);
+    void setPlayer2(playerFunc);
     void setGraphics(graphicsFunc);
     void startGame();
                     

@@ -41,17 +41,17 @@ private:
 
     QGraphicsItemGroup *graphicsBoard;
     std::vector<std::vector<QGraphicsEllipseItem*>> eclipses;
-    std::vector<QGraphicsRectItem*> hitboxes;
+    std::vector<QGraphicsRectItem*> rectangles;
+
+    playerFunc textToAI(QString);
 
 public:
     GameWindow(QGraphicsScene *scene);
-    void setPlayer1 (playerFunc);
-    void setPlayer2 (playerFunc);
     void setPlayerConnector (playerFunc);
     void setGraphicsConnector (graphicsFunc);
     short playerHandler(std::vector<std::vector<short>>);
     void graphicsHandler(std::vector<std::vector<short>>);
-    playerFunc textToAI(QString);
+
 
 protected:
     void mousePressEvent(QMouseEvent *event);

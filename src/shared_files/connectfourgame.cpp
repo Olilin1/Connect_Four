@@ -1,8 +1,11 @@
 #include "connectfourgame.hpp"
 
-ConnectFourGame::ConnectFourGame(short (*ptr1)(std::vector<std::vector<short>>),
-                                short (*ptr2)(std::vector<std::vector<short>>),
-                                void (*ptr3)(std::vector<std::vector<short>>)){
+typedef short(*playerFunc)(std::vector<std::vector<short>>);
+typedef void(*graphicsFunc)(std::vector<std::vector<short>>);
+
+ConnectFourGame::ConnectFourGame(playerFunc ptr1,
+                                playerFunc ptr2,
+                                graphicsFunc ptr3){
     player1 = ptr1;
     player2 = ptr2;
     graphics = ptr3;
@@ -42,14 +45,14 @@ void ConnectFourGame::gameLoop(){
     }
 }
 
-void ConnectFourGame::setPlayer1(short (*ptr)(std::vector<std::vector<short>>)){
+void ConnectFourGame::setPlayer1(playerFunc ptr){
     player1 = ptr;
 }
-void ConnectFourGame::setPlayer2(short (*ptr)(std::vector<std::vector<short>>)){
+void ConnectFourGame::setPlayer2(playerFunc ptr){
     player2 = ptr;
 }
 
-void ConnectFourGame::setGraphics(void (*ptr)(std::vector<std::vector<short>>)){
+void ConnectFourGame::setGraphics(graphicsFunc ptr){
     graphics = ptr;
 }
 
@@ -148,7 +151,7 @@ short ConnectFourGame::getWinner(){
 
             player1 = 0;
             player2 = 0;
-            for(int offset = 0; i+offset < 6 && j - offset >= 0; offset++){//Kolla andra diagonalem
+            for(int offset = 0; i+offset < 6 && j - offset >= 0; offset++){//Kolla andra diagonalen
                 switch (board[i+offset][j-offset])
                 {
                     case 0:
