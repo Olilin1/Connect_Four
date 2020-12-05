@@ -5,4 +5,5 @@
 #include "randomAi.hpp"
 #include "sequentialAi.hpp"
 #include "consoleGraphics.hpp"
+#include "minMaxAiV0.hpp"
 #endif
