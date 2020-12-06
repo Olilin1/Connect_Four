@@ -7,4 +7,5 @@
 #include "consoleGraphics.hpp"
 #include "minMaxAiV0.hpp"
 #include "minMaxAiV1.hpp"
+#include "minMaxAiV2.hpp"
 #endif

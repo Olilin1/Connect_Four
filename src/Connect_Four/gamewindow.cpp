@@ -26,7 +26,7 @@ GameWindow::GameWindow(QGraphicsScene *scene)
 {
     setMouseTracking(true);
 
-    QStringList alternatives = {"Human","RandomAi","SequentialAi","MinMaxAiV0","MinMaxAiV1"};
+    QStringList alternatives = {"Human","RandomAi","SequentialAi","MinMaxAiV0","MinMaxAiV1","MinMaxAiV2"};
     listSelection1 = new QComboBox(this);
     listSelection1->addItems(alternatives);
     listSelection2 = new QComboBox(this);
@@ -121,6 +121,7 @@ playerFunc GameWindow::textToAI(QString text){
     if(text == "SequentialAi") return sequentialAi;
     if(text == "MinMaxAiV0") return minMaxAiV0;
     if(text == "MinMaxAiV1") return minMaxAiV1;
+    if(text == "MinMaxAiV2") return minMaxAiV2;
     return playerConnector;
 }
 

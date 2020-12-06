@@ -61,7 +61,7 @@ short minMaxAiV0(std::vector<std::vector<short>> &board, int depth, bool maximiz
     }
 }
 
-short minMaxGetWinnerV0(std::vector<std::vector<short>> board){
+short minMaxGetWinnerV0(std::vector<std::vector<short>> &board){
     short player1, player2;
     
     for(int i = 0; i < 6; i++){

@@ -6,5 +6,5 @@
 #include<iostream>
 short minMaxAiV1(std::vector<std::vector<short>>);
 short minMaxAiV1(std::vector<std::vector<short>>&, int,int,int, bool, bool);
-short minMaxGetWinnerV1(std::vector<std::vector<short>>);
+short minMaxGetWinnerV1(std::vector<std::vector<short>>&);
 #endif
