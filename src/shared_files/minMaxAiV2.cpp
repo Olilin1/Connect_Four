@@ -9,7 +9,7 @@ short minMaxAiV2(std::vector<std::vector<short>> board){
         }
     }
     maximize = (count[1]==count[2]);
-    short move = minMaxAiV2(board, 10, -1000, 1000,  maximize, true);
+    short move = minMaxAiV2(board, 12, -1000, 1000,  maximize, true);
     return move;
 }
 
