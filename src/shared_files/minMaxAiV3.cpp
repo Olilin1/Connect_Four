@@ -5,6 +5,7 @@ short minMaxAiV3(std::vector<std::vector<short>> v){
 
     int index = -1;
     int depth = 19;
+    if(board.getMoves() >= 20) depth = 50;
     int t;
 
     for(int i = 0; i<7; i++){
