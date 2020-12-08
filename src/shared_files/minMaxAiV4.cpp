@@ -5,7 +5,7 @@ short minMaxAiV4(std::vector<std::vector<short>> v){
 
     int index = -1;
     int depth = 23;
-    if(board.getMoves() >= 15) depth = 42-board.getMoves();
+    if(board.getMoves() >= 13) depth = 42-board.getMoves();
     int t;
 
     for(int i = 0; i<7; i++){
@@ -13,7 +13,7 @@ short minMaxAiV4(std::vector<std::vector<short>> v){
     }
 
 
-    int alpha = -(42-board.getMoves());
+    int alpha = -(43-board.getMoves());
     int beta = 41-board.getMoves(); //42-moves-2+1 for winning;
 
     std::map<uint64_t,short> m;
@@ -31,7 +31,7 @@ short minMaxAiV4(std::vector<std::vector<short>> v){
             }
         }
     }
-    std::cout << alpha << std::endl;
+    //std::cout << alpha << ' ' << index << std::endl;
     return index;
 }
 short minMaxAiV4(Bitboard board, int alpha, int beta, int depth, std::map<uint64_t,short> &m){

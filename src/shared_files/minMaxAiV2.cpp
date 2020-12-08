@@ -48,8 +48,7 @@ short minMaxAiV2(std::vector<std::vector<short>> &board, int depth,int alpha, in
                     if (board[j][3 + i] == 0)
                     {
                         board[j][3 + i] = 1;
-                        if (first)
-                            std::cout << "Searching: " << 3 + i << " At depth: " << depth << std::endl;
+                        //if (first) std::cout << "Searching: " << 3 + i << " At depth: " << depth << std::endl;
                         t = minMaxAiV2(board, depth - 1, alpha, beta, false, false);
                         if (t > maxEval)
                         {
@@ -69,7 +68,7 @@ short minMaxAiV2(std::vector<std::vector<short>> &board, int depth,int alpha, in
             for(int j = 5; j >= 0; j--){
                 if(board[j][3-i] == 0){
                     board[j][3-i] = 1;
-                    if(first) std::cout << "Searching: " << 3-i<< " At depth: "<<depth<<std::endl;
+                    //if(first) std::cout << "Searching: " << 3-i<< " At depth: "<<depth<<std::endl;
                     t =minMaxAiV2(board, depth-1, alpha, beta, false, false);
                     if(t> maxEval){
                         maxEval = t;
@@ -107,7 +106,7 @@ short minMaxAiV2(std::vector<std::vector<short>> &board, int depth,int alpha, in
                 for(int j = 5; j >= 0; j--){
                     if(board[j][3+i] == 0){
                         board[j][3+i] = 2;
-                        if(first) std::cout << "Searching: " << 3+i<< " At depth: "<<depth<<std::endl;
+                        //if(first) std::cout << "Searching: " << 3+i<< " At depth: "<<depth<<std::endl;
                         t =minMaxAiV2(board, depth-1, alpha, beta, true, false);
                         if(t<minEval){
                             minEval = t;
@@ -126,7 +125,7 @@ short minMaxAiV2(std::vector<std::vector<short>> &board, int depth,int alpha, in
             for(int j = 5; j >= 0; j--){
                 if(board[j][3-i] == 0){
                     board[j][3-i] = 2;
-                    if(first) std::cout << "Searching: " << 3-i<< " At depth: "<<depth<<std::endl;
+                    //if(first) std::cout << "Searching: " << 3-i<< " At depth: "<<depth<<std::endl;
                     t =minMaxAiV2(board, depth-1, alpha, beta, true, false);
                     if(t<minEval){
                         minEval = t;
