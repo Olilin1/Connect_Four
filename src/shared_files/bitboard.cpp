@@ -66,7 +66,7 @@ bool Bitboard::isWinningMove(int col)
       }
 
 uint64_t Bitboard::getKey(){
-    return position + mask + 4432676798593;
+    return position + mask;
 }
 
 bool Bitboard::alignment(uint64_t pos){

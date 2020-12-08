@@ -9,4 +9,5 @@
 #include "minMaxAiV1.hpp"
 #include "minMaxAiV2.hpp"
 #include "minMaxAiV3.hpp"
+#include "minMaxAiV4.hpp"
 #endif
