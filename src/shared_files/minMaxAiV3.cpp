@@ -16,32 +16,18 @@ short minMaxAiV3(std::vector<std::vector<short>> v){
     int alpha = -1000;
     int beta = max;
 
-    for(int i = 0; i < 4; i++){
+    for(int i = 0; i < 7; i++){
         
-        if(board.can_play(3+i)){
+        if(board.can_play(Bitboard::moveOrder[i])){
             Bitboard board2(board);
-            board2.play(3+i);
+            board2.play(Bitboard::moveOrder[i]);
             t = -minMaxAiV3(board2, -beta, -alpha, depth-1);
-            if(t >= beta) return 3+i;
+            if(t >= beta) return Bitboard::moveOrder[i];
             if(t > alpha){ 
                 alpha = t;
-                index = 3+i;
+                index = Bitboard::moveOrder[i];
             }
         }
-
-        if(i == 0) continue;
-
-        if(board.can_play(3-i)){
-            Bitboard board2(board);
-            board2.play(3-i);
-            t = -minMaxAiV3(board2, -beta, -alpha, depth-1);
-            if(t >= beta) return 3-i;
-            if(t > alpha){ 
-                alpha = t;
-                index = 3-i;
-            }
-        }
-
     }
     return index;
 }
@@ -61,26 +47,14 @@ short minMaxAiV3(Bitboard board, int alpha, int beta, int depth){
     }
 
     int t;
-    for(int i = 0; i < 4; i++){
-        
-        if(board.can_play(3+i)){
+    for(int i = 0; i < 7; i++){
+        if(board.can_play(Bitboard::moveOrder[i])){
             Bitboard board2(board);
-            board2.play(3+i);
+            board2.play(Bitboard::moveOrder[i]);
             t = -minMaxAiV3(board2, -beta, -alpha, depth-1);
             if(t >= beta) return t;
             if(t > alpha) alpha = t;
         }
-
-        if(i == 0) continue;
-
-        if(board.can_play(3-i)){
-            Bitboard board2(board);
-            board2.play(3-i);
-            t = -minMaxAiV3(board2, -beta, -alpha, depth-1);
-            if(t >= beta) return t;
-            if(t > alpha) alpha = t;
-        }
-
     }
     return alpha;
 }

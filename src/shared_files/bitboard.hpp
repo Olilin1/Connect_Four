@@ -24,6 +24,7 @@ public:
     static uint64_t column_mask(int);
     static uint64_t coordinate_mask(int, int);
     static bool alignment(uint64_t);
+    static const std::vector<int> moveOrder;
 
 };
 

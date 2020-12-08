@@ -1,5 +1,7 @@
 #include "bitboard.hpp"
-#include "stdint.h"
+
+
+const std::vector<int> Bitboard::moveOrder = {3,4,2,5,1,6,0};
 
 Bitboard::Bitboard() : position{0}, mask{0}, moves{0} {}
 
