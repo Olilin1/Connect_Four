@@ -16,7 +16,7 @@ short minMaxAiV4(std::vector<std::vector<short>> v){
     int alpha = -(43-board.getMoves());
     int beta = 41-board.getMoves(); //42-moves-2+1 for winning;
 
-    std::map<uint64_t,short> m;
+    std::map<uint64_t,uint8_t> m;
 
     for(int i = 0; i < 7; i++){
         
@@ -34,7 +34,7 @@ short minMaxAiV4(std::vector<std::vector<short>> v){
     //std::cout << alpha << ' ' << index << std::endl;
     return index;
 }
-short minMaxAiV4(Bitboard board, int alpha, int beta, int depth, std::map<uint64_t,short> &m){
+short minMaxAiV4(Bitboard board, int alpha, int beta, int depth, std::map<uint64_t,uint8_t> &m){
     for(int i = 0; i <7; i++){
         if(board.can_play(i) && board.isWinningMove(i))
                 return 43-board.getMoves();
@@ -63,6 +63,6 @@ short minMaxAiV4(Bitboard board, int alpha, int beta, int depth, std::map<uint64
             if(t > alpha) alpha = t;
         }
     }
-    if(org!=alpha) m[board.getKey()] = alpha;
+    if(org!=alpha) m[board.getKey()] = alpha; //Alpha is known to be the best possible score I think?
     return alpha;
 }

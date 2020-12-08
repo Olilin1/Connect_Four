@@ -7,5 +7,5 @@
 #include<iostream>
 #include "bitboard.hpp"
 short minMaxAiV4(std::vector<std::vector<short>>);
-short minMaxAiV4(Bitboard, int, int, int, std::map<uint64_t,short> &);
+short minMaxAiV4(Bitboard, int, int, int, std::map<uint64_t,uint8_t> &);
 #endif
