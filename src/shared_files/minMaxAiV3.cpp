@@ -1,5 +1,6 @@
 #include "minMaxAiV3.hpp"
 
+//This version uses a bitboard to drastically improve computation times
 short minMaxAiV3(std::vector<std::vector<short>> v){
     Bitboard board(v);
 

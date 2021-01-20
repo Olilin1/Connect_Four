@@ -3,6 +3,7 @@
 #include <stdint.h>
 #include <vector>
 
+//Att representera ett bräde som en 64 bitars int låter oss göra vissa saker mycket snabbare.
 class Bitboard{
 private:
     uint64_t position, mask;

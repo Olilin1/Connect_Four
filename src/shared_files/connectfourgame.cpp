@@ -9,8 +9,6 @@ ConnectFourGame::ConnectFourGame(playerFunc ptr1,
     player1 = ptr1;
     player2 = ptr2;
     graphics = ptr3;
-    turn = 1;
-    winner = 0;
     board.resize(6);
     for(int i = 0; i < 6; i++){
         board[i].resize(7);

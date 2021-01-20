@@ -2,6 +2,7 @@
 
 #include <iostream>
 
+//Outputs who won in the end
 void displayWinner(short winner){
     using namespace std;
     if(winner == 1) cout << "Player 1 wins!" << endl;
@@ -12,6 +13,7 @@ void displayWinner(short winner){
 
 
 int main(int argc, char* argv[]) {
+    //Initialise a game, switch the functionpointers to whitchever AI/player you want, leave consoleGraphics in place.
     ConnectFourGame myGame(sequentialAi, randomAi, consoleGraphics);
     myGame.startGame();
     displayWinner(myGame.getStatus());

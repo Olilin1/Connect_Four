@@ -8,20 +8,23 @@ short minMaxAiV0(std::vector<std::vector<short>> board){
             count[board[i][j]]++;
         }
     }
-    maximize = (count[1]==count[2]);
+    maximize = (count[1]==count[2]); //Determine who's turn it is.
     short move = minMaxAiV0(board, 6, maximize, true);
-    return move;
+    return move; //Return which column to play in
 }
 
+//Start a minimax search. With first being wheter or not this is the first iteration because in that case return column to play instead of
+//minimax-value
 short minMaxAiV0(std::vector<std::vector<short>> &board, int depth, bool maximize, bool first){
-    short winner = minMaxGetWinnerV0(board);
+    short winner = minMaxGetWinnerV0(board); //Check if anyone has won
     if(winner == 3) return 0;
     if(winner == 2) return -1*(depth+1);
     if(winner == 1) return depth+1;
     if(depth == 0) return 0;
     int index;
     int t;
-    if(maximize){
+    if(maximize){ //Do we want to maximize or minimize the score?
+        //The rest is just standard minimax procedure
         short maxEval = -1000;
         for(int i = 0; i<7;i++){
             if(board[0][i] != 0) continue;
@@ -61,7 +64,8 @@ short minMaxAiV0(std::vector<std::vector<short>> &board, int depth, bool maximiz
     }
 }
 
-short minMaxGetWinnerV0(std::vector<std::vector<short>> &board){
+//Copied from connectfourgame.cpp
+short minMaxGetWinnerV0(std::vector<std::vector<short>> &board){ 
     short player1, player2;
     
     for(int i = 0; i < 6; i++){

@@ -13,6 +13,7 @@ short minMaxAiV1(std::vector<std::vector<short>> board){
     return move;
 }
 
+//Mostly the same as v1 but now with alpha/beta pruning iplemented, allowing us too look 4 extra moves into the future in reasonable time
 short minMaxAiV1(std::vector<std::vector<short>> &board, int depth,int alpha, int beta, bool maximize, bool first){
     short winner = minMaxGetWinnerV1(board);
     if(winner == 3) return 0;
@@ -21,7 +22,7 @@ short minMaxAiV1(std::vector<std::vector<short>> &board, int depth,int alpha, in
     if(depth == 0) return 0;
     int index;
     int t;
-    if(maximize){
+    if(maximize){ //Do we want to maximize or minimize score?
         short maxEval = -1000;
         for(int i = 0; i<4;i++){
             if(board[0][3+i] == 0)
@@ -31,7 +32,6 @@ short minMaxAiV1(std::vector<std::vector<short>> &board, int depth,int alpha, in
                     if (board[j][3 + i] == 0)
                     {
                         board[j][3 + i] = 1;
-                        //if (first) std::cout << "Searching: " << 3 + i << " At depth: " << depth << std::endl;
                         t = minMaxAiV1(board, depth - 1, alpha, beta, false, false);
                         if (t > maxEval)
                         {
@@ -51,7 +51,6 @@ short minMaxAiV1(std::vector<std::vector<short>> &board, int depth,int alpha, in
             for(int j = 5; j >= 0; j--){
                 if(board[j][3-i] == 0){
                     board[j][3-i] = 1;
-                    //if(first) std::cout << "Searching: " << 3-i<< " At depth: "<<depth<<std::endl;
                     t =minMaxAiV1(board, depth-1, alpha, beta, false, false);
                     if(t> maxEval){
                         maxEval = t;
@@ -67,14 +66,13 @@ short minMaxAiV1(std::vector<std::vector<short>> &board, int depth,int alpha, in
         }
         return first?index:maxEval;
     }
-    else{
+    else{ //If we want to minimize score
         short minEval = 1000;
         for(int i = 0; i<4;i++){
             if (board[0][3 + i] == 0){
                 for(int j = 5; j >= 0; j--){
                     if(board[j][3+i] == 0){
                         board[j][3+i] = 2;
-                        //if(first) std::cout << "Searching: " << 3+i<< " At depth: "<<depth<<std::endl;
                         t =minMaxAiV1(board, depth-1, alpha, beta, true, false);
                         if(t<minEval){
                             minEval = t;
@@ -93,7 +91,6 @@ short minMaxAiV1(std::vector<std::vector<short>> &board, int depth,int alpha, in
             for(int j = 5; j >= 0; j--){
                 if(board[j][3-i] == 0){
                     board[j][3-i] = 2;
-                    //if(first) std::cout << "Searching: " << 3-i<< " At depth: "<<depth<<std::endl;
                     t =minMaxAiV1(board, depth-1, alpha, beta, true, false);
                     if(t<minEval){
                         minEval = t;

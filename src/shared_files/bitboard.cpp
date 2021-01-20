@@ -1,19 +1,22 @@
 #include "bitboard.hpp"
 
 
-const std::vector<int> Bitboard::moveOrder = {3,4,2,5,1,6,0};
+const std::vector<int> Bitboard::moveOrder = {3,4,2,5,1,6,0};//The order in which we explore the moves, 
+                                                            //statistically playing in the center column is better.
 
-Bitboard::Bitboard() : position{0}, mask{0}, moves{0} {}
+Bitboard::Bitboard() : position{0}, mask{0}, moves{0} {} // Constructor for empty bitboard
 
-Bitboard::Bitboard(std::vector<std::vector<short>> v) : position{0}, mask{0}, moves{0} {
+//Constructor that takes a board from connectfourgame.cpp and converts it to a bitboard.
+Bitboard::Bitboard(std::vector<std::vector<short>> v) : position{0}, mask{0}, moves{0} { 
     std::vector<int> turn(3);
     for(int i = 0; i<6; i++){
         for(int j = 0; j<7; j++){
-            turn[v[i][j]]++;
+            turn[v[i][j]]++; //Count how many moves each player has made
         }
     }
-    bool player1 = turn[2]==turn[1];
+    bool player1 = turn[2]==turn[1]; //If they have made the same amount of moves it's player 1s turn since passing isn't allowed
 
+    //Changes the bits in the appropriate places
     for(int i = 0; i<6; i++){
         for(int j = 0; j<7; j++){
             if(v[i][j] == 1){
@@ -44,20 +47,24 @@ int Bitboard::getMoves(){
     return moves;
 }
 
+//Creates a mask from two coordinates
 uint64_t Bitboard::coordinate_mask(int row, int col){
     return (1LL << (5-row)) << (col*7);
 }
 
+//Checks if playing in a column is allowed
 bool Bitboard::can_play(int col){
     return (mask & top_mask(col)) == 0;
 }
 
+//Plays in a column
 void Bitboard::play(int col){
     position ^= mask;
     mask |= mask + bottom_mask(col);
     moves++;
 }
 
+//Checks if a move is winning or not.
 bool Bitboard::isWinningMove(int col) 
       {
         uint64_t new_position = position; 
@@ -65,10 +72,12 @@ bool Bitboard::isWinningMove(int col)
         return alignment(new_position);
       }
 
+//Returns a unique 64bit integer for a given state of the board
 uint64_t Bitboard::getKey(){
     return position + mask;
 }
 
+//Kollar om en position inehåller 4 i rad
 bool Bitboard::alignment(uint64_t pos){
 
     //Vågrät

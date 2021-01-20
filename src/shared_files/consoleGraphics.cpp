@@ -1,4 +1,6 @@
 #include"consoleGraphics.hpp"
+
+//A graphics function that displays the game in console
 void consoleGraphics(std::vector<std::vector<short>> board){
     for (int i = 0; i < 6; i++)
     {

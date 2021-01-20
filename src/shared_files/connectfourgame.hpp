@@ -12,8 +12,8 @@ private:
     std::vector<std::vector<short>> board;
     short turn;
     short winner;
-    short (*player1)(std::vector<std::vector<short>>);
-    short (*player2)(std::vector<std::vector<short>>);
+    playerFunc player1;
+    playerFunc player2;
     graphicsFunc graphics;
     void gameLoop();
     short getWinner();

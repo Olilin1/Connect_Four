@@ -1,22 +1,23 @@
 #include "minMaxAiV4.hpp"
-
+//This includes a map to store previously calculated positions
 short minMaxAiV4(std::vector<std::vector<short>> v){
     Bitboard board(v);
 
-    int index = -1;
-    int depth = 23;
-    if(board.getMoves() >= 13) depth = 42-board.getMoves();
+    int index = -1; //Which column to play
+    int depth = 23; //How many moves to search
+    if(board.getMoves() >= 13) depth = 42-board.getMoves(); //If enough moves have been played then we can search to the end of the game
     int t;
 
+    //If any move allows us to immediately win then obviously play it.
     for(int i = 0; i<7; i++){
         if(board.can_play(i) && board.isWinningMove(i)) return i;
     }
 
 
-    int alpha = -(43-board.getMoves());
+    int alpha = -(43-board.getMoves()); //Lowest possible score we could get
     int beta = 41-board.getMoves(); //42-moves-2+1 for winning;
 
-    std::map<uint64_t,uint8_t> m;
+    std::map<uint64_t,uint8_t> m; //Map to keep track of previously calculated positions
 
     for(int i = 0; i < 7; i++){
         
@@ -31,9 +32,9 @@ short minMaxAiV4(std::vector<std::vector<short>> v){
             }
         }
     }
-    //std::cout << alpha << ' ' << index << std::endl;
     return index;
 }
+
 short minMaxAiV4(Bitboard board, int alpha, int beta, int depth, std::map<uint64_t,uint8_t> &m){
     for(int i = 0; i <7; i++){
         if(board.can_play(i) && board.isWinningMove(i))
@@ -41,7 +42,7 @@ short minMaxAiV4(Bitboard board, int alpha, int beta, int depth, std::map<uint64
     }
 
     if(board.getMoves() == 42 || depth == 0) return 0;
-    int max = 41-board.getMoves();
+    int max = 41-board.getMoves();//Maximum possible score we can get
 
     if(m.count(board.getKey()) && m[board.getKey()] > alpha) alpha = m[board.getKey()];
 
@@ -50,7 +51,7 @@ short minMaxAiV4(Bitboard board, int alpha, int beta, int depth, std::map<uint64
     
 
     int t;
-    int org = alpha;
+    int org = alpha; //A way to keep track of wheter or not alpha has changed
     for(int i = 0; i < 7; i++){
         if(board.can_play(Bitboard::moveOrder[i])){
             Bitboard board2(board);

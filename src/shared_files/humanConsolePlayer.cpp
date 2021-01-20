@@ -1,5 +1,6 @@
 #include "humanConsolePlayer.hpp"
 
+//A function that allows a human to play using the console
 short humanConsolePlayer(std::vector<std::vector<short>> board){
     using namespace std;
     int kolumn;

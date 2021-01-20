@@ -1,4 +1,6 @@
 #include "randomAi.hpp"
+
+//A simple AI that just plays random available moves
 short randomAi(std::vector<std::vector<short>> board){
     _sleep(1200);
     srand(time(NULL));
