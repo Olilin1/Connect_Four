@@ -3,3 +3,20 @@ Extract SimpleConnect_Four and shared_files folders and maintain same relative p
 
 ## To compile using QT
 Extract the files, run Qmake, build, and run.
+
+## How everything works
+The game is handled using the Connectfourgame class. 2 function pointers are used to determine players/ai's and there is also an optional pointer to a function for handling graphics. This means that in order to create new AI's / graphics there should be no modification to the game class. Instead to create an AI one should simply create a function like this
+```c++
+short name_of_function(std::vector<std::vector<short>>){
+    //Logic here
+    return column_to_play
+}
+```
+And then use that like so
+```c++
+game.setPlayer1(name_of_function);
+```
+or
+```c++
+game.setPlayer2(name_of_function);
+```

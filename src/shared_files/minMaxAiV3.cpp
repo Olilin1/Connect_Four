@@ -1,12 +1,12 @@
 #include "minMaxAiV3.hpp"
 
-//This version uses a bitboard to drastically improve computation times
+//This version uses a bitboard to drastically improve computation times, it also uses negamax instead of minimax which will slightly reduce overhead
 short minMaxAiV3(std::vector<std::vector<short>> v){
     Bitboard board(v);
 
     int index = -1;
     int depth = 19;
-    if(board.getMoves() >= 20) depth = 50;
+    if(board.getMoves() >= 20) depth = 50; //If more than 20 moves have been played then we should be fast enough to compute all other possible moves from now on
     int t;
 
     for(int i = 0; i<7; i++){
